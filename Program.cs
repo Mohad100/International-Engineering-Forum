@@ -18,10 +18,11 @@ if (string.IsNullOrWhiteSpace(connectionString))
     connectionString = "Host=localhost;Port=5433;Database=ForumDb;Username=postgres";
 }
 
-// Log connection string (without password) for debugging
-var logger = LoggerFactory.Create(config => config.AddConsole()).CreateLogger<Program>();
-logger.LogInformation($"Connection string source: {(Environment.GetEnvironmentVariable("DATABASE_URL") != null ? "DATABASE_URL env variable" : "appsettings")}");
-logger.LogInformation($"Connection string (masked): {connectionString.Substring(0, Math.Min(50, connectionString.Length))}...");
+// Log connection string for debugging (using Console to ensure it shows up)
+Console.WriteLine($"=== STARTUP INFO ===");
+Console.WriteLine($"Connection string source: {(Environment.GetEnvironmentVariable("DATABASE_URL") != null ? "DATABASE_URL env variable" : "appsettings")}");
+Console.WriteLine($"Connection string present: {!string.IsNullOrWhiteSpace(connectionString)}");
+Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
 
 // Add PostgreSQL DbContext
 builder.Services.AddDbContext<ForumDbContext>(options =>
@@ -59,22 +60,28 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 // Apply migrations and create database
+Console.WriteLine("=== DATABASE MIGRATION ===");
 using (var scope = app.Services.CreateScope())
 {
     try
     {
-        var scopeLogger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        scopeLogger.LogInformation("Starting database migration...");
-        
+        Console.WriteLine("Creating database context...");
         var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContext>();
+        
+        Console.WriteLine("Running migrations...");
         dbContext.Database.Migrate();
         
-        scopeLogger.LogInformation("Database migration completed successfully!");
+        Console.WriteLine("Migration completed successfully!");
     }
     catch (Exception ex)
     {
-        var scopeLogger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        scopeLogger.LogError(ex, "An error occurred while migrating the database. Full error: {ErrorMessage}", ex.ToString());
+        Console.WriteLine($"ERROR during migration: {ex.GetType().Name}");
+        Console.WriteLine($"Message: {ex.Message}");
+        Console.WriteLine($"Stack trace: {ex.StackTrace}");
+        if (ex.InnerException != null)
+        {
+            Console.WriteLine($"Inner exception: {ex.InnerException.Message}");
+        }
         // Don't crash the app if migration fails - let it try to connect later
     }
 }
