@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for arab-engineers-forum on 2025-12-27T17:40:51Z
+# fly.toml app configuration file generated for arab-engineers-forum-z-a00q on 2025-12-27T17:49:53Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'arab-engineers-forum'
+app = 'arab-engineers-forum-z-a00q'
 primary_region = 'fra'
 
 [build]
