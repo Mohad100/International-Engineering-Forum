@@ -79,6 +79,23 @@ public class InMemoryUserService : IUserService
         }
     }
 
+    public Task<bool> UpdateUserAsync(User user)
+    {
+        lock (_lock)
+        {
+            var existingUser = _users.FirstOrDefault(u => u.Id == user.Id);
+            if (existingUser != null)
+            {
+                existingUser.Username = user.Username;
+                existingUser.Email = user.Email;
+                existingUser.PasswordHash = user.PasswordHash;
+                existingUser.IsAdmin = user.IsAdmin;
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
+    }
+
     /// <summary>
     /// Simple password hashing using SHA256
     /// Note: In production, use BCrypt, Argon2, or PBKDF2
