@@ -156,33 +156,12 @@ else
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler(errorApp =>
-    {
-        errorApp.Run(async context =>
-        {
-            var exceptionHandlerPathFeature = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature>();
-            var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-            
-            if (exceptionHandlerPathFeature?.Error != null)
-            {
-                logger.LogError(exceptionHandlerPathFeature.Error, "Unhandled exception occurred");
-            }
-            
-            context.Response.StatusCode = 500;
-            await context.Response.WriteAsync("An error occurred. Please try again later.");
-        });
-    });
-    app.UseHsts();
+    app.UseExceptionHandler("/Error");
+    // Don't use HSTS or HTTPS redirect - Render handles SSL termination
 }
 else
 {
     app.UseDeveloperExceptionPage();
-}
-
-// Only redirect to HTTPS in production when not behind a proxy
-if (!app.Environment.IsDevelopment() && !app.Configuration.GetValue<bool>("ASPNETCORE_FORWARDEDHEADERS_ENABLED"))
-{
-    app.UseHttpsRedirection();
 }
 
 app.UseStaticFiles();
