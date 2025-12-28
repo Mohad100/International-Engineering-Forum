@@ -56,6 +56,12 @@ public class LoginPageModel : PageModel
             new Claim(ClaimTypes.Email, user.Email)
         };
 
+        // Add admin role claim if user is admin
+        if (user.IsAdmin)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        }
+
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 

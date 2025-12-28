@@ -211,6 +211,7 @@
                                         <th>Email</th>
                                         <th>Role</th>
                                         <th>Joined</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -233,6 +234,30 @@
                                             </td>
                                             <td>
                                                 <small class="text-muted">@user.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                            </td>
+                                            <td>
+                                                @if (!user.IsAdmin)
+                                                {
+                                                    <form method="post" asp-page-handler="MakeAdmin" style="display: inline;">
+                                                        <input type="hidden" name="userId" value="@user.Id" />
+                                                        <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Make @user.Username an admin?')">
+                                                            <i class="bi bi-shield-check"></i> Make Admin
+                                                        </button>
+                                                    </form>
+                                                }
+                                                else if (user.Username != User.Identity?.Name)
+                                                {
+                                                    <form method="post" asp-page-handler="RemoveAdmin" style="display: inline;">
+                                                        <input type="hidden" name="userId" value="@user.Id" />
+                                                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Remove admin privileges from @user.Username?')">
+                                                            <i class="bi bi-shield-x"></i> Remove Admin
+                                                        </button>
+                                                    </form>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted"><small>(You)</small></span>
+                                                }
                                             </td>
                                         </tr>
                                     }

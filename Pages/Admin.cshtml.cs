@@ -112,6 +112,84 @@ public class AdminModel : PageModel
         return RedirectToPage();
     }
 
+    public async Task<IActionResult> OnPostMakeAdminAsync(string userId)
+    {
+        var currentUser = await _userService.GetUserByUsernameAsync(User.Identity?.Name ?? "");
+        if (currentUser == null || !currentUser.IsAdmin)
+        {
+            return RedirectToPage("/Index");
+        }
+
+        var targetUser = (await _userService.GetAllUsersAsync()).FirstOrDefault(u => u.Id == userId);
+        if (targetUser == null)
+        {
+            ErrorMessage = "User not found.";
+            return RedirectToPage();
+        }
+
+        if (targetUser.IsAdmin)
+        {
+            ErrorMessage = "User is already an admin.";
+            return RedirectToPage();
+        }
+
+        targetUser.IsAdmin = true;
+        var success = await _userService.UpdateUserAsync(targetUser);
+
+        if (success)
+        {
+            SuccessMessage = $"{targetUser.Username} is now an admin!";
+        }
+        else
+        {
+            ErrorMessage = "Failed to make user an admin.";
+        }
+
+        return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostRemoveAdminAsync(string userId)
+    {
+        var currentUser = await _userService.GetUserByUsernameAsync(User.Identity?.Name ?? "");
+        if (currentUser == null || !currentUser.IsAdmin)
+        {
+            return RedirectToPage("/Index");
+        }
+
+        var targetUser = (await _userService.GetAllUsersAsync()).FirstOrDefault(u => u.Id == userId);
+        if (targetUser == null)
+        {
+            ErrorMessage = "User not found.";
+            return RedirectToPage();
+        }
+
+        if (!targetUser.IsAdmin)
+        {
+            ErrorMessage = "User is not an admin.";
+            return RedirectToPage();
+        }
+
+        if (targetUser.Username == User.Identity?.Name)
+        {
+            ErrorMessage = "You cannot remove your own admin privileges.";
+            return RedirectToPage();
+        }
+
+        targetUser.IsAdmin = false;
+        var success = await _userService.UpdateUserAsync(targetUser);
+
+        if (success)
+        {
+            SuccessMessage = $"Admin privileges removed from {targetUser.Username}.";
+        }
+        else
+        {
+            ErrorMessage = "Failed to remove admin privileges.";
+        }
+
+        return RedirectToPage();
+    }
+
     private async Task LoadDataAsync()
     {
         Threads = await _forumService.GetAllThreadsWithViolationsAsync();

@@ -18,13 +18,15 @@
                 @if (User.Identity?.IsAuthenticated == true)
                 {
                     <span class="text-muted me-3">👋 مرحباً، <strong>@User.Identity.Name</strong>!</span>
-                    <a class="btn btn-outline-secondary rounded-pill me-2" asp-page="/Stats">📊 الإحصائيات</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-outline-secondary rounded-pill me-2" asp-page="/Stats">📊 الإحصائيات</a>
+                    }
                     <a class="btn btn-outline-info rounded-pill me-2" asp-page="/Messages">📬 الرسائل</a>
                     <a class="btn btn-outline-danger rounded-pill" asp-page="/Logout">🚪 تسجيل الخروج</a>
                 }
                 else
                 {
-                    <a class="btn btn-outline-secondary rounded-pill me-2" asp-page="/Stats">📊 الإحصائيات</a>
                     <a class="btn btn-outline-primary rounded-pill me-2" asp-page="/Login">🔑 تسجيل الدخول</a>
                     <a class="btn btn-primary rounded-pill" asp-page="/Register">✨ التسجيل</a>
                 }
