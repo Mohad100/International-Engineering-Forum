@@ -42,6 +42,10 @@ public class RegisterPageModel : PageModel
             return Page();
         }
 
+        // Check if this is the first user (auto-make admin)
+        var allUsers = await _userService.GetAllUsersAsync();
+        bool isFirstUser = allUsers.Count == 0;
+
         // Register the user
         var success = await _userService.RegisterUserAsync(
             Input.Username,
@@ -51,8 +55,22 @@ public class RegisterPageModel : PageModel
 
         if (success)
         {
-            // Registration successful, redirect to login
-            TempData["SuccessMessage"] = "Account created successfully! Please log in to continue.";
+            // If first user, make them admin
+            if (isFirstUser)
+            {
+                var newUser = await _userService.GetUserByUsernameAsync(Input.Username);
+                if (newUser != null)
+                {
+                    newUser.IsAdmin = true;
+                    await _userService.UpdateUserAsync(newUser);
+                    TempData["SuccessMessage"] = "Account created successfully! You are now an admin. Please log in.";
+                }
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Account created successfully! Please log in to continue.";
+            }
+            
             return RedirectToPage("/Login");
         }
         else
