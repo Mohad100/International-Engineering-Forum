@@ -258,6 +258,15 @@
                                                 {
                                                     <span class="text-muted"><small>(You)</small></span>
                                                 }
+                                                @if (user.Username != User.Identity?.Name)
+                                                {
+                                                    <form method="post" asp-page-handler="DeleteUser" style="display: inline;" class="ms-2">
+                                                        <input type="hidden" name="userId" value="@user.Id" />
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete user @user.Username? This action cannot be undone!')">
+                                                            <i class="bi bi-trash"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                }
                                             </td>
                                         </tr>
                                     }

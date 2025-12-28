@@ -13,4 +13,5 @@ public interface IUserService
     Task<User?> GetUserByUsernameAsync(string username);
     Task<List<User>> GetAllUsersAsync();
     Task<bool> UpdateUserAsync(User user);
+    Task<bool> DeleteUserAsync(string userId);
 }

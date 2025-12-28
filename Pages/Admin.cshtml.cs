@@ -190,6 +190,41 @@ public class AdminModel : PageModel
         return RedirectToPage();
     }
 
+    public async Task<IActionResult> OnPostDeleteUserAsync(string userId)
+    {
+        var currentUser = await _userService.GetUserByUsernameAsync(User.Identity?.Name ?? "");
+        if (currentUser == null || !currentUser.IsAdmin)
+        {
+            return RedirectToPage("/Index");
+        }
+
+        var targetUser = (await _userService.GetAllUsersAsync()).FirstOrDefault(u => u.Id == userId);
+        if (targetUser == null)
+        {
+            ErrorMessage = "User not found.";
+            return RedirectToPage();
+        }
+
+        if (targetUser.Username == User.Identity?.Name)
+        {
+            ErrorMessage = "You cannot delete your own account.";
+            return RedirectToPage();
+        }
+
+        var success = await _userService.DeleteUserAsync(userId);
+
+        if (success)
+        {
+            SuccessMessage = $"User {targetUser.Username} has been deleted.";
+        }
+        else
+        {
+            ErrorMessage = "Failed to delete user.";
+        }
+
+        return RedirectToPage();
+    }
+
     private async Task LoadDataAsync()
     {
         Threads = await _forumService.GetAllThreadsWithViolationsAsync();

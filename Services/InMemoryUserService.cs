@@ -96,6 +96,20 @@ public class InMemoryUserService : IUserService
         }
     }
 
+    public Task<bool> DeleteUserAsync(string userId)
+    {
+        lock (_lock)
+        {
+            var user = _users.FirstOrDefault(u => u.Id == userId);
+            if (user != null)
+            {
+                _users.Remove(user);
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
+    }
+
     /// <summary>
     /// Simple password hashing using SHA256
     /// Note: In production, use BCrypt, Argon2, or PBKDF2

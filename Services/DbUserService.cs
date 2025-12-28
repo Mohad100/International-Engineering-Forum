@@ -76,6 +76,26 @@ public class DbUserService : IUserService
         }
     }
 
+    public async Task<bool> DeleteUserAsync(string userId)
+    {
+        try
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     private static string HashPassword(string password)
     {
         using var sha256 = SHA256.Create();
