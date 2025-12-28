@@ -5,60 +5,139 @@
 }
 
 <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow-sm border-0 mt-5">
+    <div class="col-lg-10 col-xl-9">
+        <!-- Terms and Conditions Section -->
+        <div class="card shadow-sm border-0 mt-4 mb-4">
+            <div class="card-header bg-primary text-white py-3">
+                <h4 class="mb-0 text-center">
+                    <i class="bi bi-file-text me-2"></i>
+                    شروط وأحكام التسجيل في منتدى المهندسين العرب
+                </h4>
+            </div>
+            <div class="card-body p-4" style="max-height: 400px; overflow-y: auto; background-color: #f8f9fa;">
+                <div class="regulations-content" style="line-height: 2;">
+                    
+                    <div class="alert alert-info border-end border-primary border-4 mb-3">
+                        <strong>بسم الله الرحمن الرحيم</strong><br>
+                        مرحباً بكم في منتدى المهندسين العرب. هذا المنتدى مخصص لتبادل المعرفة والخبرات الهندسية في إطار من الاحترام والالتزام بالقيم الإسلامية والعربية الأصيلة.
+                    </div>
+
+                    <h5 class="text-primary fw-bold mt-3 mb-2">
+                        <i class="bi bi-1-circle-fill me-2"></i>الالتزام بالقيم الإسلامية
+                    </h5>
+                    <ul class="mb-3">
+                        <li>يجب على جميع الأعضاء احترام تعاليم الدين الإسلامي</li>
+                        <li>يُمنع منعاً باتاً نشر أي محتوى يخالف الشريعة الإسلامية</li>
+                        <li>الالتزام بالأدب والأخلاق الحميدة في التعامل مع الآخرين</li>
+                        <li>عدم نشر أو مشاركة أي محتوى غير لائق أو مخالف للآداب العامة</li>
+                    </ul>
+
+                    <h5 class="text-danger fw-bold mt-3 mb-2">
+                        <i class="bi bi-2-circle-fill me-2"></i>المحتوى المحظور
+                    </h5>
+                    <ul class="mb-3">
+                        <li><strong>المحتوى الإباحي:</strong> يُمنع منعاً باتاً نشر أي صور أو نصوص أو روابط إباحية</li>
+                        <li><strong>الإساءة للأديان:</strong> يُمنع الإساءة للإسلام أو أي دين آخر</li>
+                        <li><strong>التمييز العنصري:</strong> يُمنع أي شكل من أشكال التمييز</li>
+                        <li><strong>الإساءة الشخصية:</strong> يُمنع السب والشتم والتنمر</li>
+                        <li><strong>المحتوى المخالف للقانون:</strong> يُمنع نشر أي محتوى يخالف القوانين</li>
+                    </ul>
+
+                    <h5 class="text-success fw-bold mt-3 mb-2">
+                        <i class="bi bi-3-circle-fill me-2"></i>آداب التعامل
+                    </h5>
+                    <ul class="mb-3">
+                        <li>استخدام لغة محترمة ولائقة في جميع المشاركات</li>
+                        <li>احترام آراء الآخرين حتى لو اختلفت معها</li>
+                        <li>مساعدة الأعضاء الجدد والترحيب بهم</li>
+                        <li>الالتزام بموضوع النقاش وعدم الخروج عنه</li>
+                    </ul>
+
+                    <h5 class="text-warning fw-bold mt-3 mb-2">
+                        <i class="bi bi-4-circle-fill me-2"></i>الإجراءات التأديبية
+                    </h5>
+                    <p class="mb-2">في حالة مخالفة هذه الشروط، تحتفظ الإدارة بالحق في:</p>
+                    <ul class="mb-3">
+                        <li>تحذير العضو المخالف</li>
+                        <li>حذف المحتوى المخالف</li>
+                        <li>إيقاف العضوية مؤقتاً أو نهائياً</li>
+                    </ul>
+
+                    <div class="alert alert-warning border-end border-warning border-4 mt-3">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <strong>تنبيه مهم:</strong> بالتسجيل في المنتدى، فإنك توافق على الالتزام بجميع هذه الشروط والأحكام.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="card shadow-sm border-0 mb-5">
             <div class="card-body p-5">
                 <h2 class="text-center mb-4 fw-bold text-primary">انضم إلينا! ✨</h2>
                 <p class="text-center text-muted mb-4">
-                    أنشئ حسابك وكن جزءاً من مجتمعنا الرائع!
+                    أنشئ حسابك وكن جزءاً من مجتمع المهندسين العرب
                 </p>
 
                 @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                 {
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Oops!</strong> @Model.ErrorMessage
+                        <strong>خطأ!</strong> @Model.ErrorMessage
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 }
 
                 <form method="post">
                     <div class="mb-3">
-                        <label asp-for="Input.Username" class="form-label fw-semibold">اسم المستخدم</label>
+                        <label asp-for="Input.Username" class="form-label fw-semibold">
+                            <i class="bi bi-person-fill me-1"></i>اسم المستخدم
+                        </label>
                         <input asp-for="Input.Username" class="form-control form-control-lg rounded-pill" placeholder="اختر اسم مستخدم مميز" />
                         <span asp-validation-for="Input.Username" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Input.Email" class="form-label fw-semibold">البريد الإلكتروني (اختياري)</label>
+                        <label asp-for="Input.Email" class="form-label fw-semibold">
+                            <i class="bi bi-envelope-fill me-1"></i>البريد الإلكتروني (اختياري)
+                        </label>
                         <input asp-for="Input.Email" class="form-control form-control-lg rounded-pill" placeholder="your@email.com" />
                         <span asp-validation-for="Input.Email" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Input.Password" class="form-label fw-semibold">كلمة المرور</label>
+                        <label asp-for="Input.Password" class="form-label fw-semibold">
+                            <i class="bi bi-lock-fill me-1"></i>كلمة المرور
+                        </label>
                         <input asp-for="Input.Password" class="form-control form-control-lg rounded-pill" placeholder="6 أحرف على الأقل" />
                         <span asp-validation-for="Input.Password" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-4">
-                        <label asp-for="Input.ConfirmPassword" class="form-label fw-semibold">تأكيد كلمة المرور</label>
+                        <label asp-for="Input.ConfirmPassword" class="form-label fw-semibold">
+                            <i class="bi bi-shield-lock-fill me-1"></i>تأكيد كلمة المرور
+                        </label>
                         <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg rounded-pill" placeholder="أعد كتابتها للتأكيد" />
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-4">
-                        <div class="form-check">
-                            <input asp-for="Input.AcceptTerms" class="form-check-input" type="checkbox" />
-                            <label asp-for="Input.AcceptTerms" class="form-check-label">
-                                أوافق على <a href="/Terms" target="_blank" class="text-primary fw-semibold">الشروط والأحكام</a> وأتعهد بالالتزام بالقيم الإسلامية والعربية
-                            </label>
+                        <div class="card border-primary">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input asp-for="Input.AcceptTerms" class="form-check-input" type="checkbox" id="acceptTerms" />
+                                    <label class="form-check-label fw-bold text-primary" for="acceptTerms">
+                                        <i class="bi bi-check2-square me-1"></i>
+                                        أوافق على جميع الشروط والأحكام المذكورة أعلاه وأتعهد بالالتزام بالقيم الإسلامية والعربية الأصيلة
+                                    </label>
+                                </div>
+                                <span asp-validation-for="Input.AcceptTerms" class="text-danger small d-block mt-2"></span>
+                            </div>
                         </div>
-                        <span asp-validation-for="Input.AcceptTerms" class="text-danger small d-block mt-1"></span>
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">
-                            إنشاء حسابي 🎉
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill py-3">
+                            <i class="bi bi-person-check-fill me-2"></i>إنشاء حسابي 🎉
                         </button>
                     </div>
                 </form>
@@ -67,7 +146,9 @@
 
                 <p class="text-center text-muted mb-0">
                     لديك حساب بالفعل؟ 
-                    <a asp-page="/Login" class="text-decoration-none fw-semibold">سجل الدخول هنا</a>
+                    <a asp-page="/Login" class="text-decoration-none fw-semibold">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>سجل الدخول هنا
+                    </a>
                 </p>
             </div>
         </div>
