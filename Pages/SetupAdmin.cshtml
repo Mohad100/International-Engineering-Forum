@@ -1,0 +1,51 @@
+@page
+@model SetupAdminModel
+@{
+    ViewData["Title"] = "Admin Setup";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">🔐 إعداد المدير</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div class="alert alert-info">
+                            @Model.Message
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">اسم المستخدم</label>
+                            <input asp-for="Username" class="form-control" placeholder="أدخل اسم المستخدم الخاص بك" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">كلمة المرور</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="أدخل كلمة المرور" required />
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">
+                            <i class="bi bi-shield-check me-2"></i>تعيين كمدير
+                        </button>
+                    </form>
+
+                    <div class="alert alert-warning mt-4">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>تنبيه:</strong> هذه الصفحة للاستخدام لمرة واحدة فقط لإعداد المدير الأول.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
