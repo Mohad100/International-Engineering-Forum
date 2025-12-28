@@ -65,29 +65,33 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 // Apply migrations and create database
 Console.WriteLine("=== DATABASE MIGRATION ===");
-using (var scope = app.Services.CreateScope())
+
+// Skip migration if DATABASE_URL is not set (prevents crash during Render build)
+if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("DATABASE_URL")))
 {
-    try
+    using (var scope = app.Services.CreateScope())
     {
-        Console.WriteLine("Creating database context...");
-        var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContext>();
-        
-        Console.WriteLine("Running migrations...");
-        dbContext.Database.Migrate();
-        
-        Console.WriteLine("Migration completed successfully!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"ERROR during migration: {ex.GetType().Name}");
-        Console.WriteLine($"Message: {ex.Message}");
-        Console.WriteLine($"Stack trace: {ex.StackTrace}");
-        if (ex.InnerException != null)
+        try
         {
-            Console.WriteLine($"Inner exception: {ex.InnerException.Message}");
+            Console.WriteLine("Creating database context...");
+            var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContext>();
+            
+            Console.WriteLine("Running migrations...");
+            dbContext.Database.Migrate();
+            
+            Console.WriteLine("Migration completed successfully!");
         }
-        // Don't crash the app if migration fails - let it try to connect later
+        catch (Exception ex)
+        {
+            Console.WriteLine($"WARNING: Migration failed but continuing startup");
+            Console.WriteLine($"ERROR: {ex.Message}");
+            // Continue anyway - database might not be ready yet
+        }
     }
+}
+else
+{
+    Console.WriteLine("Skipping migration - DATABASE_URL not set");
 }
 
 // Configure the HTTP request pipeline
