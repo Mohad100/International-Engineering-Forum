@@ -3739,6 +3739,38 @@ body::before {
         padding-right: 1rem;
     }
 
+    /* Header section with title and buttons */
+    .container-fluid > .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 1rem;
+    }
+
+    .container-fluid > .d-flex h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .auth-buttons .btn {
+        flex: 1 1 auto;
+        min-width: 120px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .auth-buttons span {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
     /* Navbar */
     .navbar-brand {
         font-size: 1.25rem;
@@ -3785,6 +3817,17 @@ body::before {
 
     .hero-subtitle {
         font-size: 0.95rem;
+    }
+
+    /* Header */
+    .container-fluid > .d-flex h2 {
+        font-size: 1.25rem;
+    }
+
+    .auth-buttons .btn {
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.6rem;
     }
 
     .category-row-card {
