@@ -1205,9 +1205,9 @@ body::before {
 }
 
 [data-theme="dark"] .alert-warning {
-    background-color: rgba(245, 158, 11, 0.15);
-    border-color: #f59e0b;
-    color: #fcd34d;
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    color: #856404 !important;
 }
 
 [data-theme="dark"] .alert-success {
@@ -2713,9 +2713,15 @@ body::before {
 }
 
 [data-theme="dark"] .alert {
-    background-color: var(--card-bg) !important;
+    background-color: var(--card-bg);
     color: var(--text-primary);
     border-color: var(--border-color);
+}
+
+[data-theme="dark"] .alert-warning {
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    color: #856404 !important;
 }
 
 /* Modals */
