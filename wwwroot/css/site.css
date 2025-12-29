@@ -1007,10 +1007,11 @@ body::before {
 
 /* New Thread Card Design */
 .threads-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
     padding: 1rem 0;
+    width: 100%;
 }
 
 .thread-card {
