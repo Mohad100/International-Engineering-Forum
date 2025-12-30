@@ -100,10 +100,33 @@
 
                     <div class="mb-3">
                         <label asp-for="Input.Email" class="form-label fw-semibold">
-                            <i class="bi bi-envelope-fill me-1"></i>Email (Optional)
+                            <i class="bi bi-envelope-fill me-1"></i>Email <span class="text-danger">*</span>
                         </label>
-                        <input asp-for="Input.Email" class="form-control form-control-lg rounded-pill" placeholder="your@email.com" />
+                        <input asp-for="Input.Email" class="form-control form-control-lg rounded-pill" placeholder="your@email.com" required />
                         <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Major" class="form-label fw-semibold">
+                            <i class="bi bi-mortarboard-fill me-1"></i>Major / Field of Study <span class="text-danger">*</span>
+                        </label>
+                        <select asp-for="Input.Major" class="form-select form-select-lg rounded-pill" required>
+                            <option value="">-- Select your major --</option>
+                            <option value="Civil Engineering">🏗️ Civil Engineering</option>
+                            <option value="Electrical Engineering">⚡ Electrical Engineering</option>
+                            <option value="Mechanical Engineering">⚙️ Mechanical Engineering</option>
+                            <option value="Software Engineering">💻 Software Engineering</option>
+                            <option value="Chemical Engineering">🧪 Chemical Engineering</option>
+                            <option value="Architecture">🏛️ Architecture</option>
+                            <option value="Industrial Engineering">🏭 Industrial Engineering</option>
+                            <option value="Aerospace Engineering">✈️ Aerospace Engineering</option>
+                            <option value="Biomedical Engineering">🏥 Biomedical Engineering</option>
+                            <option value="Environmental Engineering">🌍 Environmental Engineering</option>
+                            <option value="Computer Engineering">🖥️ Computer Engineering</option>
+                            <option value="Petroleum Engineering">🛢️ Petroleum Engineering</option>
+                            <option value="Other">📚 Other</option>
+                        </select>
+                        <span asp-validation-for="Input.Major" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-3">

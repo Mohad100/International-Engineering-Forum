@@ -116,6 +116,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddScoped<IUserService, DbUserService>();
 builder.Services.AddScoped<IForumService, DbForumService>();
 builder.Services.AddScoped<IPrivateMessageService, DbPrivateMessageService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 

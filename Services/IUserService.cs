@@ -7,7 +7,7 @@ namespace Fourm.Services;
 /// </summary>
 public interface IUserService
 {
-    Task<bool> RegisterUserAsync(string username, string email, string password);
+    Task<bool> RegisterUserAsync(string username, string email, string password, string major);
     Task<User?> ValidateUserAsync(string username, string password);
     Task<bool> UserExistsAsync(string username);
     Task<User?> GetUserByUsernameAsync(string username);

@@ -15,7 +15,7 @@ public class DbUserService : IUserService
         _context = context;
     }
 
-    public async Task<bool> RegisterUserAsync(string username, string email, string password)
+    public async Task<bool> RegisterUserAsync(string username, string email, string password, string major)
     {
         if (await _context.Users.AnyAsync(u => u.Username.ToLower() == username.ToLower()))
         {
@@ -27,6 +27,7 @@ public class DbUserService : IUserService
             Id = Guid.NewGuid().ToString(),
             Username = username,
             Email = email,
+            Major = major,
             PasswordHash = HashPassword(password),
             CreatedAt = DateTime.UtcNow,
             IsAdmin = false // Admin must be set manually via database
