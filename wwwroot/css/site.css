@@ -78,6 +78,27 @@ html {
     position: relative;
 }
 
+/* Transparent Background Icons for Stats Cards */
+.stat-icon-bg {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    opacity: 0.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+.stat-icon-bg i {
+    font-size: 120px;
+    color: white;
+}
+
 [data-theme="dark"] .row .card.border-0.shadow-sm.bg-white {
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
 }
