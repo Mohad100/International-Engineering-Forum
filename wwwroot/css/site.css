@@ -2811,6 +2811,27 @@ body::before {
     text-shadow: none;
 }
 
+[data-theme="dark"] .forum-page[data-category="civil"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/civil-engineering-bg.jpg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="civil"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="civil"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="civil"] .back-link {
+    color: #93c5fd !important;
+}
+
 /* Electrical Engineering Forum Header */
 .forum-page[data-category="electrical"] .forum-header {
     background: 
@@ -2838,6 +2859,27 @@ body::before {
 .forum-page[data-category="electrical"] .back-link {
     color: #2563eb !important;
     text-shadow: none;
+}
+
+[data-theme="dark"] .forum-page[data-category="electrical"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/elect-section%20.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="electrical"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="electrical"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="electrical"] .back-link {
+    color: #93c5fd !important;
 }
 
 /* Mechanical Engineering Forum Header */
@@ -2869,6 +2911,27 @@ body::before {
     text-shadow: none;
 }
 
+[data-theme="dark"] .forum-page[data-category="mechanical"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/mechnical-section%20.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="mechanical"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="mechanical"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="mechanical"] .back-link {
+    color: #93c5fd !important;
+}
+
 /* Software Engineering Forum Header */
 .forum-page[data-category="software"] .forum-header {
     background: 
@@ -2896,6 +2959,27 @@ body::before {
 .forum-page[data-category="software"] .back-link {
     color: #2563eb !important;
     text-shadow: none;
+}
+
+[data-theme="dark"] .forum-page[data-category="software"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/software-section.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="software"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="software"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="software"] .back-link {
+    color: #93c5fd !important;
 }
 
 /* Chemical Engineering Forum Header */
@@ -2927,6 +3011,27 @@ body::before {
     text-shadow: none;
 }
 
+[data-theme="dark"] .forum-page[data-category="chemical"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/chemical-section%20.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="chemical"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="chemical"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="chemical"] .back-link {
+    color: #93c5fd !important;
+}
+
 /* Architecture Engineering Forum Header */
 .forum-page[data-category="architecture"] .forum-header {
     background: 
@@ -2956,6 +3061,27 @@ body::before {
     text-shadow: none;
 }
 
+[data-theme="dark"] .forum-page[data-category="architecture"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        url('/images/architecture-section.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="architecture"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="architecture"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="architecture"] .back-link {
+    color: #93c5fd !important;
+}
+
 /* General Discussion Forum Header */
 .forum-page[data-category="discussion"] .forum-header {
     background: 
@@ -2983,6 +3109,27 @@ body::before {
 .forum-page[data-category="discussion"] .back-link {
     color: #2563eb !important;
     text-shadow: none;
+}
+
+[data-theme="dark"] .forum-page[data-category="discussion"] .forum-header {
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%),
+        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-theme="dark"] .forum-page[data-category="discussion"] .forum-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="discussion"] .forum-description {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .forum-page[data-category="discussion"] .back-link {
+    color: #93c5fd !important;
 }
 
 .forum-header-content {
