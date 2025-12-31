@@ -72,7 +72,6 @@ html {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%) !important;
     border: 2px solid transparent !important;
     border-radius: 1.5rem !important;
-    backdrop-filter: blur(15px) !important;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
     overflow: hidden;
@@ -227,8 +226,6 @@ html {
     border: 2px solid var(--border-color);
     border-radius: 1.5rem;
     box-shadow: 0 4px 15px var(--shadow-color);
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
     transition: all 0.3s ease;
 }
 
@@ -300,8 +297,6 @@ a:not(.btn):not(.badge):hover {
     border: 2px solid rgba(102, 126, 234, 0.2);
     border-radius: 1.5rem;
     padding: 1.5rem 2rem;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
     box-shadow: 
         0 8px 32px rgba(31, 38, 135, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -615,8 +610,6 @@ body::before {
         0 8px 32px rgba(31, 38, 135, 0.37),
         inset 0 1px 0 rgba(255, 255, 255, 0.1),
         0 0 80px rgba(102, 126, 234, 0.1);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -685,8 +678,6 @@ body::before {
     box-shadow: 
         0 8px 25px rgba(102, 126, 234, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -1994,12 +1985,10 @@ body::before {
 
 .forum-page[data-category="civil"] .thread-card {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .forum-page[data-category="civil"] .thread-card {
     background: rgba(26, 32, 44, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 
@@ -2027,12 +2016,10 @@ body::before {
 
 .forum-page[data-category="civil"] .thread-card {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .forum-page[data-category="civil"] .thread-card {
     background: rgba(26, 32, 44, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 /* Beautiful Floating Animations */
@@ -3409,12 +3396,10 @@ body::before {
 
 .forum-page[data-category="civil"] .thread-card {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .forum-page[data-category="civil"] .thread-card {
     background: rgba(26, 32, 44, 0.95);
-    backdrop-filter: blur(10px);
 }
 
 /* Responsive Design */
